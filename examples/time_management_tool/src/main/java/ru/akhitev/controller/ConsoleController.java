@@ -1,11 +1,13 @@
 package ru.akhitev.controller;
 
+import org.springframework.stereotype.Component;
 import ru.akhitev.domain.model.Task;
 import ru.akhitev.domain.service.TaskService;
 
 import java.util.Optional;
 import java.util.Scanner;
 
+@Component
 public class ConsoleController {
   private static final String MENU = """
           Введите [1], чтобы показать все задачи

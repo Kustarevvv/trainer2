@@ -1,5 +1,6 @@
 package ru.akhitev.domain.service;
 
+import org.springframework.stereotype.Service;
 import ru.akhitev.domain.model.Task;
 import ru.akhitev.domain.repo.TaskRepository;
 
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@Service
 public class TaskService {
   private final TaskRepository repository;
 

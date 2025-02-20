@@ -1,10 +1,12 @@
 package ru.akhitev.storage;
 
+import org.springframework.stereotype.Repository;
 import ru.akhitev.domain.model.Task;
 import ru.akhitev.domain.repo.TaskRepository;
 
 import java.util.*;
 
+@Repository
 public class TaskInMemoryStorage implements TaskRepository {
   private final Map<String, Task> tasks;
 
