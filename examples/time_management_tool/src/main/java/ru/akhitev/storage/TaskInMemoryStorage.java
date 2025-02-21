@@ -6,7 +6,6 @@ import ru.akhitev.domain.repo.TaskRepository;
 
 import java.util.*;
 
-@Repository
 public class TaskInMemoryStorage implements TaskRepository {
   private final Map<String, Task> tasks;
 
