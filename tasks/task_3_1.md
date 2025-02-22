@@ -1,45 +1,107 @@
-# Задание 2.1
-Добавить класса-модель и покрыть его тестами
+# Задание 3.1
+
+В соответствии со слоеной архитектурой, добавить:
+
+- в слой бизнес-логики
+  
+  - репозиторий
+  
+  - сервис
+
+- в слой данных
+  
+  - реализацию репозитории
+
+- в слой представления
+  
+  - контроллер для взаимодействия с пользователем
+
+- в Application - соеденить все вместе и осуществить запуск
 
 ## Техническое описание
+
 ### Архитектура
+
 #### Диаграмма классов
+
 ```plantuml
 @startuml
-package ru.<ваш_ник>.trainer.domain.model {
-  class OpenQuestionCard {
-    - question: String
-    - expectedAnswer
-    + getQuestion(): String
-    + checkAnswer(answer: String): boolean
-  }
+
+package "ru.<ваш_ник>" {
+    class Application {
+      main()
+    }
+    
+    package "domain" {
+        package "model" {
+          class OpenQuestionCard {
+            - Long id
+            - question: String
+            - expectedAnswer
+            + getQuestion(): String
+            + checkAnswer(answer: String): boolean
+          }
+        }
+        
+        package "repo" {
+            interface QuestionRepository {
+                + findAll(): List<OpenQuestionCard>
+                + findById(id: Long): Optional<OpenQuestionCard>
+                + add(task: OpenQuestionCard)
+                + update(task: OpenQuestionCard)
+                + remove(id: Long)
+            }
+        }
+        
+        package "service" {
+            class QuestionService {
+                - repository: QuestionRepository
+                + getAll(): List<OpenQuestionCard>
+                + getById(id: Long): Optional<OpenQuestionCard>
+                + contains(task: OpenQuestionCard): boolean
+                + save(task: OpenQuestionCard)
+                + delete(id: Long)
+                - isTaskInvalid(task: OpenQuestionCard): boolean
+            }
+        }
+    }
+    
+    package "storage" {
+        class QuestionInMemoryStorage {
+            + findAll(): List<OpenQuestionCard>
+            + findById(id: Long): Optional<OpenQuestionCard>
+            + add(task: OpenQuestionCard)
+            + update(task: OpenQuestionCard)
+            + remove(id: Long)
+        }
+    }
+    
+    package "controller" {
+        class ConsoleController {
+            - service: QuestionService
+            + interactWithUser()
+        }
+    }
+    
+    QuestionRepository --> OpenQuestionCard
+    QuestionInMemoryStorage ..|> QuestionRepository
+    QuestionService --> QuestionRepository
+    ConsoleController --> QuestionService
+    Application --> ConsoleController
+    Application --> QuestionService
+    Application --> QuestionInMemoryStorage
 }
 @enduml
 ```
-- Поля `question` и `expectedAnswer` - обязательны и неизменяемы в ходе работы программы
-- Поле `question` доступно снаружи через `getter`
-- Поле `expectedAnswer` снаружи недоступно
-- Для проверки ответа используется метод `checkAnswer`, принимающий ответ, введенных пользователем
+
+- В классе-моделе появилось поле `id` типа `Long`, являющийся уникальным идентификатором в системе
 
 ## Критерии приема
-- Класс `OpenQuestionCard` создан в пакете `ru.<ваш_ник>.trainer.domain.model`
-- Все поля имеют модификатор доступа `private`
-- Обязательные поля задаются через конструктор класса
-- В случае передачи невалидных данных, выбрасывается исключение `IllegalArgumentException` с понятным текстом
-- Покрыть юнит-тестами
-  - создание класса
-  - вызов `checkAnswer`
+
+- Классы реализованы в соответствии со схемой
+- Компоненты связываются через контекст Spring
+- Не нарушаются прицнипы SOLID, KISS, прочие
 - Изменения должны быть закоммичены в ветку `hw1`
 - Если еще не сделан Pull Request из `hw1` в `master`, сделать
 - Прислать ссылку на Pull Request
 - После получения Approve-а задание будет считаться выполненным
-
-## Подсказки
-- Для создание пакетов `domain.model`, нужно нажать правой кнопкой на пакете `ru.<ваш_ник>` и выбрать `New`, `Package`
-- Для создания юнит-теста можно
-  - Открыть наш класс `OpenQuestionCard`
-  - нажать правой кнопкой на названии класса в редакторе кода
-  - в появившемся меню выбирать `Generate`
-  - выбирать `Test`
-  - в появившемся окне проверить, что стоит `JUnit5` и нажать `Ok`
-  - проверить, что класс сгенерировался в `src/test/ru....domain.model`
