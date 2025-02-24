@@ -1,14 +1,13 @@
-package ru.akhitev.config;
+package ru.kustarevvv.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
-import ru.akhitev.Application;
+import ru.kustarevvv.Application;
 
 import javax.sql.DataSource;
-import java.sql.Driver;
 
 @Configuration
 @ComponentScan(basePackageClasses = Application.class)

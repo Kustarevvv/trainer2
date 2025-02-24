@@ -1,8 +1,8 @@
-package ru.akhitev.domain.service;
+package ru.kustarevvv.domain.service;
 
 import org.springframework.stereotype.Service;
-import ru.akhitev.domain.model.Task;
-import ru.akhitev.domain.repo.TaskRepository;
+import ru.kustarevvv.domain.model.Task;
+import ru.kustarevvv.domain.repo.TaskRepository;
 
 import java.util.List;
 import java.util.Objects;

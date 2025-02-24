@@ -1,6 +1,6 @@
-package ru.akhitev.domain.model;
+package ru.kustarevvv.domain.model;
 
-import ru.akhitev.domain.utility.ValidationUtil;
+import ru.kustarevvv.domain.utility.ValidationUtil;
 
 import java.time.ZonedDateTime;
 

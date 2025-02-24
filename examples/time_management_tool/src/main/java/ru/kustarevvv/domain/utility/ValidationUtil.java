@@ -1,4 +1,4 @@
-package ru.akhitev.domain.utility;
+package ru.kustarevvv.domain.utility;
 
 import java.util.Objects;
 

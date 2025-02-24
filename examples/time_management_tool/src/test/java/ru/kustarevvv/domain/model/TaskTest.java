@@ -1,4 +1,4 @@
-package ru.akhitev.domain.model;
+package ru.kustarevvv.domain.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

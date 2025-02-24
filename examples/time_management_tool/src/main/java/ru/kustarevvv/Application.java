@@ -1,9 +1,9 @@
-package ru.akhitev;
+package ru.kustarevvv;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.akhitev.config.SpringConfig;
-import ru.akhitev.controller.ConsoleController;
+import ru.kustarevvv.config.SpringConfig;
+import ru.kustarevvv.controller.ConsoleController;
 
 public class Application {
   public static void main(String[] args) {

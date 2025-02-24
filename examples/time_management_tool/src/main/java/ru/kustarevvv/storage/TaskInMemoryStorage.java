@@ -1,8 +1,7 @@
-package ru.akhitev.storage;
+package ru.kustarevvv.storage;
 
-import org.springframework.stereotype.Repository;
-import ru.akhitev.domain.model.Task;
-import ru.akhitev.domain.repo.TaskRepository;
+import ru.kustarevvv.domain.model.Task;
+import ru.kustarevvv.domain.repo.TaskRepository;
 
 import java.util.*;
 

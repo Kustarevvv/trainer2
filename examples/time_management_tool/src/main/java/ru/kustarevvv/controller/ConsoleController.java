@@ -1,8 +1,8 @@
-package ru.akhitev.controller;
+package ru.kustarevvv.controller;
 
 import org.springframework.stereotype.Component;
-import ru.akhitev.domain.model.Task;
-import ru.akhitev.domain.service.TaskService;
+import ru.kustarevvv.domain.model.Task;
+import ru.kustarevvv.domain.service.TaskService;
 
 import java.util.Optional;
 import java.util.Scanner;

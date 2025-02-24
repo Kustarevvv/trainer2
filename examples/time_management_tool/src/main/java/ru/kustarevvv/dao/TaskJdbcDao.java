@@ -1,8 +1,8 @@
-package ru.akhitev.dao;
+package ru.kustarevvv.dao;
 
 import org.springframework.stereotype.Repository;
-import ru.akhitev.domain.model.Task;
-import ru.akhitev.domain.repo.TaskRepository;
+import ru.kustarevvv.domain.model.Task;
+import ru.kustarevvv.domain.repo.TaskRepository;
 
 import javax.sql.DataSource;
 import java.sql.*;
