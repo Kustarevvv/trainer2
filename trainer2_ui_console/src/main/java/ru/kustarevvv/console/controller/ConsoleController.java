@@ -1,4 +1,4 @@
-package ru.kustarevvv.controller;
+package ru.kustarevvv.console.controller;
 
 import org.springframework.stereotype.Component;
 

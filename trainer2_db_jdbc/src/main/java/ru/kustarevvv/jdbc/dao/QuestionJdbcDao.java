@@ -1,4 +1,4 @@
-package ru.kustarevvv.dao;
+package ru.kustarevvv.jdbc.dao;
 
 import org.springframework.stereotype.Repository;
 import ru.kustarevvv.domain.model.OpenQuestionCard;
@@ -20,8 +20,8 @@ public class QuestionJdbcDao implements QuestionRepository {
     private static final String DDL_QUERY = """
           Create table openQuestionCards (id int primary key, question varchar(100), expectedAnswer varchar(100))
           """;
-    private static final String INSERT_TASK_QUERY = """
-          INSERT INTO openQuestionCards(id, question, expectedAnswer) VALUES (?, ?, ?)
+    private static final String INSERT_QUESTION_QUERY = """
+          INSERT INTO openQuestionCards(question) VALUES (?)
           """;
     private static final String FIND_ALL_QUERY = """
           SELECT id, question, expectedAnswer FROM openQuestionCards
@@ -30,7 +30,7 @@ public class QuestionJdbcDao implements QuestionRepository {
           SELECT id, question, expectedAnswer FROM openQuestionCards WHERE id = ?
           """;
     private static final String UPDATE_QUESTION_QUERY = """
-          UPDATE openQuestionCards SET id=?, question=?, expectedAnswer =?
+          UPDATE openQuestionCards question=?, expectedAnswer =?
           """;
     private static final String DELETE_QUESTION_QUERY = """
           DELETE FROM openQuestionCards WHERE id=?
@@ -55,9 +55,8 @@ public class QuestionJdbcDao implements QuestionRepository {
         Connection connection = null;
         try {
             connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement(INSERT_TASK_QUERY);
-            statement.setString(1, String.valueOf(openQuestionCard.getId()));
-            statement.setString(2, openQuestionCard.getQuestion());
+            PreparedStatement statement = connection.prepareStatement(INSERT_QUESTION_QUERY);
+            statement.setString(1, openQuestionCard.getQuestion());
             statement.execute();
             statement.close();
         } catch (SQLException e) {
@@ -71,8 +70,7 @@ public class QuestionJdbcDao implements QuestionRepository {
     public void update(OpenQuestionCard openQuestionCard) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_QUESTION_QUERY);){
-            statement.setString(1, String.valueOf(openQuestionCard.getId()));
-            statement.setString(2, openQuestionCard.getQuestion());
+            statement.setString(1, openQuestionCard.getQuestion());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
