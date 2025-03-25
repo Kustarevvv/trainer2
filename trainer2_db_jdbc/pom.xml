@@ -9,7 +9,7 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>trainer_db_jdbc</artifactId>
+    <artifactId>trainer2_db_jdbc</artifactId>
 
     <dependencies>
         <dependency>

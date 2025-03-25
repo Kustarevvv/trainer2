@@ -35,14 +35,14 @@ public class MainController implements Runnable {
         mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints layoutConstraints = new GridBagConstraints();
 
-        layoutConstraints.gridx = 0;
-        layoutConstraints.gridy = 0;
-        mainPanel.add(new JLabel("ID"), layoutConstraints);
-        JTextField idField = new JTextField(15);
-        layoutConstraints = new GridBagConstraints();
-        layoutConstraints.gridx = 1;
-        layoutConstraints.gridy = 0;
-        mainPanel.add(idField, layoutConstraints);
+//        layoutConstraints.gridx = 0;
+//        layoutConstraints.gridy = 0;
+//        mainPanel.add(new JLabel("ID"), layoutConstraints);
+//        JTextField idField = new JTextField(15);
+//        layoutConstraints = new GridBagConstraints();
+//        layoutConstraints.gridx = 1;
+//        layoutConstraints.gridy = 0;
+//        mainPanel.add(idField, layoutConstraints);
 
         layoutConstraints = new GridBagConstraints();
         layoutConstraints.gridx = 0;
@@ -72,15 +72,24 @@ public class MainController implements Runnable {
         layoutConstraints.gridwidth = 2;
 
         questionForEdit.ifPresent( t -> {
-            idField.setText(String.valueOf(t.getId()));
+            //idField.setText(String.valueOf(t.getId()));
             questionField.setText(t.getQuestion());
             expectedAnswerField.setText(t.getExpectedAnswer());
         });
 
         addButton.addActionListener(event -> {
-            OpenQuestionCard openQuestionCard = new OpenQuestionCard(Long.parseLong(idField.getText()),questionField.getText(), expectedAnswerField.getText());
+            //проверяет есть ли уже заданный id, чтобы не создавались дубликаты
+            Long id = questionForEdit.map(OpenQuestionCard::getId).orElse(null);
+
+            OpenQuestionCard openQuestionCard = new OpenQuestionCard(
+                    id,
+                    questionField.getText(),
+                    expectedAnswerField.getText()
+            );
+
             service.save(openQuestionCard);
             prepareMainPanelForListQuestion();
+            //заменил
         });
         mainPanel.add(addButton, layoutConstraints);
         mainFrame.add(mainPanel);
