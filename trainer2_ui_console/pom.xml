@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>ru.kustarevvv</groupId>
-            <artifactId>trainer_db_jdbc</artifactId>
+            <artifactId>trainer2_db_jdbc</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
@@ -33,10 +33,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
         </dependency>
     </dependencies>
 
