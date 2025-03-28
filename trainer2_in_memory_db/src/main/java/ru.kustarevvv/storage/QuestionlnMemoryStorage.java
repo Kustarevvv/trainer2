@@ -45,4 +45,9 @@ public class QuestionlnMemoryStorage implements QuestionRepository {
     public void remove(Long id) {
         openQuestionCards.remove(id);
     }
+
+    @Override
+    public void save(OpenQuestionCard card) {
+
+    }
 }

@@ -56,6 +56,11 @@ public class QuestionJdbcTemplateDao implements QuestionRepository {
         jdbcTemplate.update(DELETE_QUESTION_QUERY, id);
     }
 
+    @Override
+    public void save(OpenQuestionCard card) {
+
+    }
+
     private void initSchema() {
         jdbcTemplate.update(DDL_QUERY);
     }

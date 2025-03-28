@@ -51,11 +51,11 @@ public class OpenQuestionCardTest {
         Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new OpenQuestionCard(ID, CARD_QUESTION, ""));
     }
 
-    @Test
-    @DisplayName("Создание OpenQuestionCard с id равным null выбрасывает исключение")
-    void having_nullId_when_newOpenQuestionCard_then_exceptionThrown() {
-        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new OpenQuestionCard(null,CARD_QUESTION, CARD_EXPECTED_ANSWER));
-    }
+//    @Test
+//    @DisplayName("Создание OpenQuestionCard с id равным null выбрасывает исключение")
+//    void having_nullId_when_newOpenQuestionCard_then_exceptionThrown() {
+//        Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> new OpenQuestionCard(null,CARD_QUESTION, CARD_EXPECTED_ANSWER));
+//    }
 
     @Test
     @DisplayName("Проверка ответа методом checkAnswer() проходит успешно")

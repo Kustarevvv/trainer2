@@ -1,0 +1,161 @@
+.navbar-right {
+  padding: 10px;
+  background-color: #333;
+  bottom: 0px;
+  right: 0px;
+  position: fixed;
+  top: 0px;
+  width: 12%;
+  z-index: 8;
+  overflow: hidden;
+  margin-right: 0px;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.navbar-right.collapsed {
+  width: 2%;
+}
+
+.navbar-right.collapsed .nav-label {
+  display: none;
+}
+
+.btn-right-expand-collapse {
+    position: absolute;
+    display: block;
+    left: 0px;
+    bottom:0;
+    width: 100%;
+    padding: 8px 0;
+    border-top:solid 1px #666;
+    color: grey;
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn-right-expand-collapse:hover,
+.btn-right-expand-collapse:focus {
+    background-color: #222;
+    color: white;
+}
+
+.btn-right-expand-collapse:active {
+    background-color: #111;
+}
+
+.navbar-right-menu,
+.navbar-right-menu li {
+  margin:0; padding:0;
+  list-style: none;
+}
+
+.navbar-right-menu li a {
+  display: block;
+  padding: 10px 18px;
+  text-align: left;
+  border-bottom:solid 1px #444;
+  color: #ccc;
+}
+
+.navbar-right-menu li a:hover {
+  background-color: #000;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-right-menu li a .glyphicon {
+  margin-right: 6px;
+}
+
+.navbar-right-menu li a:hover .glyphicon {
+  color: orchid;
+}
+
+.navbar-left {
+  background-color: #333;
+  bottom: 0px;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 12%;
+  z-index: 8;
+  overflow: hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  padding: 10px;
+}
+
+.navbar-left.collapsed {
+  width: 2%;
+}
+
+.navbar-left.collapsed .nav-label {
+  display: none;
+}
+
+.btn-expand-collapse {
+    position: absolute;
+    display: block;
+    left: 0px;
+    bottom:0;
+    width: 100%;
+    padding: 8px 0;
+    border-top:solid 1px #666;
+    color: grey;
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn-expand-collapse:hover,
+.btn-expand-collapse:focus {
+    background-color: #222;
+    color: white;
+}
+
+.btn-expand-collapse:active {
+    background-color: #111;
+}
+
+.navbar-left-menu,
+.navbar-left-menu li {
+  margin:0; padding:0;
+  list-style: none;
+}
+
+.navbar-left-menu li a {
+  display: block;
+  padding: 10px 18px;
+  text-align: left;
+  border-bottom:solid 1px #444;
+  color: #ccc;
+}
+
+.navbar-left-menu li a:hover {
+  background-color: #000;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-left-menu li a .glyphicon {
+  margin-right: 6px;
+}
+
+.navbar-left-menu li a:hover .glyphicon {
+  color: orchid;
+}
+
+.main-content {
+  margin-left: 12%;
+  margin-right: 12%;
+}
+
+.main-content.left-collapsed {
+  margin-left: 2%;
+}
+
+.main-content.right-collapsed {
+  margin-right: 2%;
+}

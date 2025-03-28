@@ -1,0 +1,71 @@
+.sidebar-title {
+    color: gold;
+}
+
+select option {
+    color: white;
+}
+
+a {
+     color: white;
+}
+
+.nav_list_element {
+    color: white;
+}
+
+.tab-name {
+    color: grey;
+}
+
+h3 {
+    color: blue;
+}
+
+h2 {
+    color: blue;
+}
+
+.main-content-main-table {
+    border: 1px solid black;
+}
+
+.main-content-main-table tr td {
+    border: 1px solid black;
+}
+
+.main-content-main-table thead tr th {
+    color: blue;
+}
+
+.main-content-main-table td {
+    padding: 5px;
+    padding-right: 30px;
+}
+
+.main-content-sub-table tr td {
+    border: 0px;
+}
+
+.main-content-sub-table thead tr th {
+    color: red;
+}
+
+.main-content-sub-table td {
+    padding: 5px;
+    padding-right: 30px;
+}
+
+input, select {
+    background-color: papayawhip;
+}
+
+
+button {
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    background-color: papayawhip;
+}
