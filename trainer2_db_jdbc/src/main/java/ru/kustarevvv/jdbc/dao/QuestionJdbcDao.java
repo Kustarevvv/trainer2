@@ -89,6 +89,11 @@ public class QuestionJdbcDao implements QuestionRepository {
     }
 
     @Override
+    public void save(OpenQuestionCard card) {
+
+    }
+
+    @Override
     public List<OpenQuestionCard> findAll() {
         List<OpenQuestionCard> openQuestionCards = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();

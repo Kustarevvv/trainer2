@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav class="navbar-left"  th:fragment="left_panel">
+    <a href="#" class="btn-expand-collapse" onclick="expandCollaps()"><span class="glyphicon glyphicon-menu-left"></span></a>
+    <article class="navbar-left-menu">
+        <h2 class="sidebar-title">Q<span class="nav-label">uestions</span></h2>
+        <span class="nav-label">
+                <table>
+                    <tr th:each="question  : ${questions}">
+                        <td>
+                            <span class="nav_list_element" th:text="${question.id}"></span>:
+                            <span class="nav_list_element" th:text="${question.question}"></span>:
+                            <span class="nav_list_element" th:text="${question.expectedAnswer}"></span>
+                        </td>
+                        <td><a th:href="@{'/question/edit/' + ${question.id}}"><span class="glyphicon glyphicon-pencil" style="padding-left: 10px;"></span></a></td>
+                        <td><a th:href="@{'/question/delete/' + ${question.id}}"><span class="glyphicon glyphicon-trash" style="padding-left: 10px;"></span></a></td>
+                    </tr>
+                </table>
+                <button type="button" name="addQuestion" onclick="location.href='/question/new'"><span class="glyphicon glyphicon-plus"></span></button>
+            </span>
+    </article>
+</nav>
+</body>
+</html>

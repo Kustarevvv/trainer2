@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "question")
 public class OpenQuestionCardEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
