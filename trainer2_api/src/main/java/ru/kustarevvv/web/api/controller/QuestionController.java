@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kustarevvv.domain.service.QuestionService;
+import ru.kustarevvv.web.api.dto.OpenQuestionCardCreateDto;
 import ru.kustarevvv.web.api.mapper.QuestionDtoMapper;
 import ru.kustarevvv.web.api.dto.OpenQuestionCardDto;
 @Controller
@@ -18,12 +19,19 @@ public class QuestionController {
 
     @GetMapping("/new")
     public String newProject(Model model) {
-        model.addAttribute("question", new OpenQuestionCardDto());
+        model.addAttribute("question", new OpenQuestionCardCreateDto());
         return "edit_question";
     }
 
-    @PostMapping("/save")
-    public String add(@ModelAttribute OpenQuestionCardDto question, Model model) {
+    @PostMapping("/create")
+    public String createQuestion(@ModelAttribute OpenQuestionCardCreateDto question, Model model){
+        questionService.save(mapper.mapToModel(question));
+        model.addAttribute("questions", mapper.mapToDto(questionService.getAll()));
+        return "main";
+    }
+
+    @PostMapping("/update")
+    public String updateQuestion(@ModelAttribute OpenQuestionCardDto question, Model model){
         questionService.save(mapper.mapToModel(question));
         model.addAttribute("questions", mapper.mapToDto(questionService.getAll()));
         return "main";

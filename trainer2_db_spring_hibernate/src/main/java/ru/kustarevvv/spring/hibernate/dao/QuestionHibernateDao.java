@@ -33,7 +33,12 @@ public class QuestionHibernateDao implements QuestionRepository {
     @Transactional
     public void save(OpenQuestionCard card) {
         OpenQuestionCardEntity entity = mapper.mapToEntity(card);
-        entityManager.merge(entity);
+        if (findById(entity.getId()).isPresent()) {
+            entityManager.merge(entity);
+        } else {
+            entity.setId(null);
+            entityManager.persist(entity);
+        }
     }
 
     @Override
