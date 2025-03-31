@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import ru.kustarevvv.domain.service.QuestionService;
+import ru.kustarevvv.web.api.dto.OpenQuestionCardCreateDto;
 import ru.kustarevvv.web.api.dto.OpenQuestionCardDto;
 import ru.kustarevvv.web.api.mapper.QuestionDtoMapper;
 
@@ -35,7 +36,7 @@ public class QuestionRestController {
             description = "Создает новый вопрос"
     )
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
-    public void add(@Parameter(description = "Новая задача") @RequestBody OpenQuestionCardDto dto) {
+    public void add(@Parameter(description = "Новая задача") @RequestBody OpenQuestionCardCreateDto dto) {
         questionService.save(mapper.mapToModel(dto));
     }
 
