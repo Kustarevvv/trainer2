@@ -1,5 +1,6 @@
 package ru.kustarevvv.domain.service;
 
+import org.springframework.stereotype.Component;
 import ru.kustarevvv.domain.model.OpenQuestionCard;
 import ru.kustarevvv.domain.repo.QuestionRepository;
 
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class QuestionService {
+
     private final QuestionRepository repository;
     public QuestionService(QuestionRepository repository) {
         this.repository = repository;
