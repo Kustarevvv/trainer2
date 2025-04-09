@@ -10,6 +10,7 @@ import ru.kustarevvv.domain.model.OpenQuestionCard;
 import ru.kustarevvv.domain.repo.QuestionRepository;
 import ru.kustarevvv.spring.hibernate.entity.OpenQuestionCardEntity;
 import ru.kustarevvv.spring.hibernate.mapper.QuestionMapper;
+import ru.kustarevvv.spring.hibernate.repo.QuestionCrudRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,12 +22,13 @@ public class QuestionHibernateDao implements QuestionRepository {
     private static final Logger logger = LogManager.getLogger(QuestionHibernateDao.class);
 
     private final QuestionMapper mapper;
-
+    private final QuestionCrudRepository repository;
     @PersistenceContext
     private EntityManager entityManager;
 
-    public QuestionHibernateDao(QuestionMapper mapper) {
+    public QuestionHibernateDao(QuestionMapper mapper, QuestionCrudRepository repository) {
         this.mapper = mapper;
+        this.repository = repository;
     }
 
     //  будет работать как add или update автоматически
@@ -45,43 +47,32 @@ public class QuestionHibernateDao implements QuestionRepository {
     @Transactional(readOnly = true)
     public List<OpenQuestionCard> findAll() {
         logger.debug("Выбираем всех");
-        List<OpenQuestionCardEntity> openQuestionCardEntities = entityManager
-                .createQuery("SELECT question FROM OpenQuestionCardEntity question", OpenQuestionCardEntity.class)
-                .getResultList();
+        List<OpenQuestionCardEntity> openQuestionCardEntities = repository.findAll();
         return mapper.mapToModel(openQuestionCardEntities);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<OpenQuestionCard> findById(Long id) {
-        List<OpenQuestionCardEntity> entity = entityManager.createQuery("SELECT question FROM OpenQuestionCardEntity question WHERE question.id = ?1", OpenQuestionCardEntity.class)
-                .setParameter(1, id)
-                .getResultList();
-        if (!entity.isEmpty()) {
-            OpenQuestionCard openQuestionCard = mapper.mapToModel(entity.get(0));
-            return Optional.of(openQuestionCard);
-        } else {
-            return Optional.empty();
-        }
+        Optional<OpenQuestionCardEntity> entity = repository.findById(id);
+        return entity.map(mapper::mapToModel);
     }
-    //  изменил(hibernate сам решает)
+
     @Override
     @Transactional
     public void add(OpenQuestionCard openQuestionCard) {
-        save(openQuestionCard);
+        OpenQuestionCardEntity entity = mapper.mapToEntity(openQuestionCard);
+        repository.save(entity);
     }
 
-    //  изменил(hibernate сам решает)
     @Override
     public void update(OpenQuestionCard openQuestionCard) {
-        save(openQuestionCard);
+        OpenQuestionCardEntity entity = mapper.mapToEntity(openQuestionCard);
+        repository.save(entity);
     }
 
     @Override
     public void remove(Long id) {
-        OpenQuestionCardEntity entity = entityManager.createQuery("SELECT question FROM OpenQuestionCardEntity question WHERE question.id = ?1", OpenQuestionCardEntity.class)
-                .setParameter(1, id)
-                .getSingleResult();
-        entityManager.remove(entity);
+        repository.findById(id).ifPresent(repository::delete);
     }
 }

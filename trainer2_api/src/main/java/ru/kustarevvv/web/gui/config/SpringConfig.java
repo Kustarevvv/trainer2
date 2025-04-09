@@ -8,7 +8,7 @@ import ru.kustarevvv.spring.hibernate.config.DbConfig;
 @Configuration
 @Import(DbConfig.class)
 @ComponentScan(basePackages = "ru.kustarevvv")
-@PropertySource("jdbc.properties")
+@PropertySource("classpath:jdbc.properties")
 public class SpringConfig {
 
 }

@@ -9,6 +9,11 @@
         <version>1.0</version>
     </parent>
 
+    <properties>
+        <spring-boot.version>3.2.0</spring-boot.version>
+        <java.version>17</java.version>
+    </properties>
+
     <artifactId>trainer2_ui_console</artifactId>
 
     <dependencies>
@@ -18,22 +23,29 @@
         </dependency>
         <dependency>
             <groupId>ru.kustarevvv</groupId>
-            <artifactId>trainer2_db_jdbc</artifactId>
+            <artifactId>trainer2_http_client</artifactId>
             <version>1.0</version>
         </dependency>
-        <dependency>
-            <groupId>ru.kustarevvv</groupId>
-            <artifactId>trainer2_db_spring_jdbc</artifactId>
-            <version>1.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>ru.kustarevvv</groupId>-->
+<!--            <artifactId>trainer2_db_spring_jdbc</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.h2database</groupId>-->
+<!--            <artifactId>h2</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-dependencies</artifactId>-->
+<!--            <version>${spring-boot.version}</version>-->
+<!--            <type>pom</type>-->
+<!--            <scope>import</scope>-->
+<!--        </dependency>-->
 
     </dependencies>
 
@@ -55,6 +67,10 @@
                         </manifest>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

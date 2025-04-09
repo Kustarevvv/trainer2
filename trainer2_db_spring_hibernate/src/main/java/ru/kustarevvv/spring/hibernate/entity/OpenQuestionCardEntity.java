@@ -11,6 +11,10 @@ public class OpenQuestionCardEntity {
     @Column(name = "id")
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private ProjectEntity project;
+
     @Column
     private String question;
 
